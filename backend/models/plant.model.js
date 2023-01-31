@@ -20,12 +20,10 @@ const plantSchema = new Schema(
     widthPotential: { type: Number }, // in cm
     heightPotential: { type: Number }, // in cm
     description: { type: String },
-    tempmax: { type: Number }, // in celsius
+    temperatureMax: { type: Number }, // in celsius
     watering: { type: String },
     commonName: { type: Array },
-    tempmin: { type: Number }, // in celsius
-    category: { type: String },
-    diseases: { type: String },
+    temperatureMin: { type: Number }, // in celsius
     colorOfLeaf: { type: Array },
     climate: { type: String },
   },
