@@ -4,25 +4,30 @@ const Schema = mongoose.Schema;
 
 const plantSchema = new Schema(
   {
+    img: { type: String },
+    use: { type: String },
+    latinName: { type: String },
+    family: { type: String },
+    lightTolered: { type: String },
+    heightAtPurchase: { type: Number }, // in cm
+    lightIdeal: { type: String },
+    widthAtPurchase: { type: Number }, // in cm
     id: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
-    latin: { type: String },
-    family: { type: String },
-    common: { type: Array },
-    category: { type: String },
-    origin: { type: String },
-    climate: { type: String },
-    tempmax: { celsius: { type: Number }, fahrenheit: { type: Number } },
-    tempmin: { celsius: { type: Number }, fahrenheit: { type: Number } },
-    ideallight: { type: String },
-    toleratedlight: { type: String },
+    widthPotential: { type: Number }, // in cm
+    heightPotential: { type: Number }, // in cm
+    description: { type: String },
+    tempmax: { type: Number }, // in celsius
     watering: { type: String },
-    insects: { type: Array },
+    commonName: { type: Array },
+    tempmin: { type: Number }, // in celsius
+    category: { type: String },
     diseases: { type: String },
-    use: { type: Array },
+    colorOfLeaf: { type: Array },
+    climate: { type: String },
   },
 
   {
