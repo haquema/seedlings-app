@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Plant = require('./plant.model');
-// const User = require('./user');
+const User = require('./user.model');
 
 const mongoDbUrl =
   'mongodb+srv://Anthony-O:CC8txqzZ16v2lcra@cluster0.61xuyqe.mongodb.net/seedling';
@@ -21,6 +21,17 @@ const seedDB = async (model, data) => {
   await model.deleteMany({});
   await model.insertMany(data);
 };
+
+const users = [
+  {
+    username: 'john123',
+    password: '123',
+    email: 'john@john.com',
+    fullName: 'John Oak',
+    address: 'Milton\nInvergordon\nRoss Shire\nIV18 0NQ',
+    userGardenPatch: [],
+  },
+];
 
 const plants = [
   {
@@ -68,7 +79,9 @@ const plants = [
 
 connectToMongoDb(mongoDbUrl);
 
-seedDB(Plant, plants).then(() => {
-  console.log('Database seeded!');
-  mongoose.connection.close();
-});
+seedDB(Plant, plants)
+  .then(() => seedDB(User, users))
+  .then(() => {
+    console.log('Database seeded!');
+    mongoose.connection.close();
+  });
