@@ -16,8 +16,10 @@ const signupUser = async (req, res) => {
       fullName,
       address
     );
-    res.status(201).json({ message: 'OK' });
+   
+    res.status(201).json({email});
   } catch (error) {
+    
     res.status(400).json({ error: error.message });
   }
 };
