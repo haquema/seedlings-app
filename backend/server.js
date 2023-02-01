@@ -29,3 +29,4 @@ app.use('/user', usersRouter);
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`); //starts the server on the specified port
 });
+

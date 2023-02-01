@@ -1,4 +1,4 @@
-const Plant = require('../models/plant.model')
+const Plant = require('../models/plant_model')
 const mongoose = require('mongoose')
 
 // GET all plants
