@@ -14,7 +14,7 @@ const Signup = ({navigate}) => {
     const userData = { username, password, email, fullName, address };
 
     try {
-      const response = await fetch("/signup", {
+      let response = await fetch("http://localhost:5000/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,13 +36,15 @@ const Signup = ({navigate}) => {
 
   return (
     <div className="profile-details">
+      <h3>Sign Up</h3>
       <form id="signup_form" onSubmit={handleSubmit}>
-        <input
+      <input
           required
-          placeholder="Username"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           required
@@ -52,20 +54,19 @@ const Signup = ({navigate}) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+         <input
+          required
+          placeholder="Username"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <input
           required
           placeholder="Full Name"
           id="fullName"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-        />
-        <input
-          required
-          placeholder="Email"
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           required

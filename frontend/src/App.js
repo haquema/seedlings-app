@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
-import Signup from "./signUp";
-import Login from "./Login";
+import Signup from "./components/signUp";
+import Login from "./components/Login";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
 function App() {
