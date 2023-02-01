@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const plantRouter = require('./routes/plantRouter')
 
 require('dotenv').config(); //configures to allow you to have the env variables in the dotenv file 
 
@@ -12,6 +13,9 @@ app.use(express.json()); //middleware - allows server to parse JSON when sending
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri);
+
+// routes
+app.use('/home', plantRouter)
 
 const connection = mongoose.connection;
 connection.once('open', () => {
