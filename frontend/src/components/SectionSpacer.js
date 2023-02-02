@@ -1,4 +1,4 @@
-const SearchSection = () => {
+const SectionSpacer = () => {
   return (
     <section className="container-fluid bg-light p-4 invisible">
       <h3 id="info-bar" className="text-center mb-4">
@@ -30,4 +30,4 @@ const SearchSection = () => {
   );
 };
 
-export default SearchSection;
+export default SectionSpacer;

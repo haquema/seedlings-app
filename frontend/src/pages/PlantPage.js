@@ -1,5 +1,4 @@
-import Navbar from '../components/Navbar';
-import SearchSection from '../components/SearchSection';
+import SectionSpacer from '../components/SectionSpacer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -28,8 +27,7 @@ const PlantPage = () => {
 
   return (
     <>
-      <Navbar />
-      <SearchSection />
+      <SectionSpacer />
 
       <section
         id="main-container"
