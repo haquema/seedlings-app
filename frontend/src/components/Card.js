@@ -17,7 +17,7 @@ const Card = ({ plant }) => {
         <div className="card-footer">
           <div className="row">
             <div className="col">
-              <Link to="#" className="btn btn-success">
+              <Link to={`/plants/${plant.id}`} className="btn btn-success">
                 View details
               </Link>
             </div>
