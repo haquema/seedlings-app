@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 
@@ -40,7 +39,6 @@ const FeedPage = () => {
 
   return (
     <>
-      <Navbar />
       <section className="container-fluid bg-light p-4">
         <h3 id="info-bar" className="text-center mb-4">
           Welcome!
