@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 
 const Navbar = (navigate) => {
-  // const logout = () => {
-  //   window.localStorage.removeItem('token');
-  //   window.localStorage.removeItem('user_id');
-  //   // navigate('/login');
-  // };
+  const handleLogout = () => {
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user_id');
+    window.localStorage.removeItem('user_name');
+    // navigate('/login');
+  };
 
   // const user_id = window.localStorage.getItem('user_id');
 
+  
   return (
     <nav className="navbar navbar-expand-lg bg-success border me-auto p-3">
       <div className="container">
@@ -28,15 +30,18 @@ const Navbar = (navigate) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
-            <Link to="#" className=" btn btn-success mx-1 my-2">
+            <Link to="/home" className=" btn btn-success mx-1 my-2">
               Feed
             </Link>
-            <Link to="#" className=" btn btn-success mx-1 my-2">
+            <Link to="" className="btn btn-success mx-1 my-2">
               My Garden Patch
             </Link>
-            <Link to="#" className=" btn btn-success mx-1 my-2">
+            {(window.localStorage.getItem("token")) && <Link to="/login" className="btn btn-success mx-1 my-2" onClick={handleLogout}>
               Logout
-            </Link>
+            </Link>}
+            {!(window.localStorage.getItem("token")) && <Link to="/login" className="btn btn-success mx-1 my-2">
+            Login
+            </Link>}
           </div>
         </div>
       </div>
@@ -45,3 +50,5 @@ const Navbar = (navigate) => {
 };
 
 export default Navbar;
+
+
