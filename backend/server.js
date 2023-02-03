@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const plantRouter = require('./routes/plantRouter')
+const plantRouter = require('./routes/plantRouter');
+const gardenRouter = require('./routes/garden');
 const usersRouter = require('./routes/user');
 
 require('dotenv').config(); //configures to allow you to have the env variables in the dotenv file 
@@ -18,6 +19,7 @@ mongoose.connect(uri);
 // routes
 app.use('/home', plantRouter)
 app.use('/', usersRouter);
+app.use('/garden', gardenRouter)
 
 const connection = mongoose.connection;
 connection.once('open', () => {
