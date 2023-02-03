@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Plant = require('./plant.model');
-const User = require('./user.model');
+const Plant = require('./plant_model');
+const User = require('./user_model');
 
 const mongoDbUrl =
   'mongodb+srv://Anthony-O:CC8txqzZ16v2lcra@cluster0.61xuyqe.mongodb.net/seedling';
