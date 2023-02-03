@@ -14,7 +14,10 @@ const addPlant = async (req, res) => {
   const { id } = req.params;
   const { plant_id } = req.body;
   const plantToAdd = await Plant.findById(plant_id);
-  const user = await User.findById(id);
+  const user = await User.findOneAndUpdate({_id: id}, {
+    $push:{"userGardenPatch":plantToAdd}
+  });
+  const token = await TokenGenerator.jsonwebtoken(req.user_id);
 
 
   res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });
