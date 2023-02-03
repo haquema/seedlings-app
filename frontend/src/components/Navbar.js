@@ -10,13 +10,16 @@ const Navbar = (navigate) => {
 
   // const user_id = window.localStorage.getItem('user_id');
 
-  
   return (
     <nav className="navbar navbar-expand-lg bg-success border me-auto p-3">
       <div className="container">
-        <Link to="#" className="navbar-brand ">
-          Seedlings
-        </Link>
+        <div className="navbar-brand ">
+          <img
+            src={'/images/logo-w.png'}
+            alt="logo"
+            style={{ maxWidth: '200px' }}
+          />
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -36,12 +39,20 @@ const Navbar = (navigate) => {
             <Link to="" className="btn btn-success mx-1 my-2">
               My Garden Patch
             </Link>
-            {(window.localStorage.getItem("token")) && <Link to="/login" className="btn btn-success mx-1 my-2" onClick={handleLogout}>
-              Logout
-            </Link>}
-            {!(window.localStorage.getItem("token")) && <Link to="/login" className="btn btn-success mx-1 my-2">
-            Login
-            </Link>}
+            {window.localStorage.getItem('token') && (
+              <Link
+                to="/login"
+                className="btn btn-success mx-1 my-2"
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            )}
+            {!window.localStorage.getItem('token') && (
+              <Link to="/login" className="btn btn-success mx-1 my-2">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -50,5 +61,3 @@ const Navbar = (navigate) => {
 };
 
 export default Navbar;
-
-
