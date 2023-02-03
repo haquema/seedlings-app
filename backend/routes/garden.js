@@ -8,4 +8,6 @@ router.get('/:id', profileGarden)
 // POST add a specific garden/plant to user collection
 router.post('/:id', addPlant)
 
+router.patch('/:id', addPlant)
+
 module.exports = router

@@ -1,7 +1,32 @@
-import { Link } from 'react-router-dom';
+import { Link, useRevalidator } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './Card.css';
 
 const Card = ({ plant }) => {
+
+  const [updated, setUpdated] = useState(null)
+  const [token, setToken] = useState(window.localStorage.getItem('token'))
+
+  const handleGarden = (plant_id, event) => {
+    event.preventDefault();
+   
+      const user = window.localStorage.getItem('user_id')
+      fetch(`http://localhost:5000/garden/${user}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          plant_id: `${plant_id}`,
+        }),
+      })
+        .then((response) => {
+          setUpdated(true);
+        });
+    
+  };
+
   return (
     <div className="col">
       <div className="card h-100 shadow-lg border justify-content-center">
@@ -20,9 +45,7 @@ const Card = ({ plant }) => {
               </Link>
             </div>
             <div className="col">
-              <Link to="#" className="btn btn-success">
-                Add plant
-              </Link>
+            <button onClick={(e) => handleGarden(plant._id,e)}>Add to Garden</button>
             </div>
           </div>
         </div>
