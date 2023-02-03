@@ -54,7 +54,7 @@ const PlantPage = () => {
           className="m-5 pb-4 justify-content-start bg-light rounded"
         >
           <img src={plant.img} alt="plant" className="mt-5" />
-
+        
           <p>Name: {plant.name}</p>
 
           <p>Also known as: {plant.knownAs}</p>
@@ -63,10 +63,7 @@ const PlantPage = () => {
 
           <p>Toxic to: {plant.toxicTo}</p>
 
-          <img src={'/images/swisscheese.png'} alt="plantcareimg" />
-
-          <img src={plant.careimg} alt="care" />
-
+  
           <p>Minimum Temperature: {plant.minTemp}</p>
 
           <p>Maximum Temperature: {plant.maxTemp}</p>
@@ -74,7 +71,12 @@ const PlantPage = () => {
           <p>Habitat: {plant.habitat}</p>
 
           <p>Pruning Instructions: {plant.pruning}</p>
+
         </div>
+
+     
+         <img src={plant.careimg} alt="care" />
+
       </section>
     </>
   );
