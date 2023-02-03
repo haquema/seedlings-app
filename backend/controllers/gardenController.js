@@ -10,6 +10,17 @@ const profileGarden = async (req, res) => {
   res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });
 }
 
+const addPlant = async (req, res) => {
+  const { id } = req.params;
+  const { plant_id } = req.body;
+  const plantToAdd = await Plant.findById(plant_id);
+  const user = await User.findById(id);
+
+
+  res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });
+}
+
 module.exports = {
-  profileGarden
+  profileGarden,
+  addPlant
 };
