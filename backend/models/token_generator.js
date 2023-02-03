@@ -1,4 +1,6 @@
 const JWT = require("jsonwebtoken");
+// require('dotenv').config();
+
 const options = {expiresIn: "10m"};
 const secret = process.env.JWT_SECRET;
 
