@@ -4,7 +4,7 @@ const Plant = require('../models/plant_model');
 
 const profileGarden = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate('userGardenPatch');
   const token = await TokenGenerator.jsonwebtoken(req.user_id);
 
   res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });

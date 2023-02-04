@@ -24,7 +24,7 @@ const Card = ({ plant }) => {
       });
     } else {
       alert("Please log in to add a plant to your garden");
-      window.location.href = "/login";
+      window.location.href = "/login"
     }
   };
 
