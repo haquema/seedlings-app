@@ -23,7 +23,28 @@ const addPlant = async (req, res) => {
   res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });
 }
 
+//DELETE single plant from garden
+
+const deletePlantFromGarden = async (req, res) => {
+  const { id } = req.params.id;
+  const { plant_id } = req.body;
+
+  try {
+    const user = await User.findOne({ _id: id }, {
+      $pull: { userGardenPatch: { _id: plant_id } }
+    });
+    const token = await TokenGenerator.jsonwebtoken(req.user_id);
+
+    res.status(200).json({ message: 'OK', token: token, garden: user.userGardenPatch });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
 module.exports = {
   profileGarden,
-  addPlant
+  addPlant,
+  deletePlantFromGarden,
+  
 };
