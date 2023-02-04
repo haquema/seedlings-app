@@ -7,6 +7,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import FeedPage from './pages/FeedPage';
 import PlantPage from './pages/PlantPage';
+import GardenPage from './pages/gardenPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<FeedPage />} />
           <Route path="/plants/:id" element={<PlantPage />} />
+          <Route path="/garden/:id" element={<GardenPage />} />
         </Routes>
       </div>
     </>
