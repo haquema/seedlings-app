@@ -18,6 +18,7 @@ function App() {
           <Route path="/signup" element={<Signup navigate={useNavigate()} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<FeedPage />} />
+          <Route path="/" element={<FeedPage />} />
           <Route path="/plants/:id" element={<PlantPage />} />
           <Route path="/garden/:id" element={<GardenPage />} />
         </Routes>
