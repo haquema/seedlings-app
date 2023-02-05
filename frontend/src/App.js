@@ -7,6 +7,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import FeedPage from './pages/FeedPage';
 import PlantPage from './pages/PlantPage';
+import Identification from './pages/PlantIdPage';
 import GardenPage from './pages/gardenPage';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<FeedPage />} />
           <Route path="/plants/:id" element={<PlantPage />} />
           <Route path="/garden/:id" element={<GardenPage />} />
+          <Route path="/identification" element={<Identification />} />
         </Routes>
       </div>
     </>

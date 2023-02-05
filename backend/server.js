@@ -10,6 +10,14 @@ require('dotenv').config(); //configures to allow you to have the env variables 
 const app = express();
 const port = process.env.PORT || 5000; //creates express server with a defined port number
 
+// const corsOptions = {
+//   origin: 'http://localhost:3000', // the React frontend's URL
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   exposedHeaders: ['Content-Type'],
+//   credentials: true
+// };
+
 app.use(cors());
 app.use(express.json()); //middleware - allows server to parse JSON when sending a receiving requests
 

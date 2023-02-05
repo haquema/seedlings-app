@@ -4,6 +4,7 @@ import "./Card.css";
 
 const Card = ({ plant }) => {
   const [updated, setUpdated] = useState(null);
+
   const handleGarden = (plant_id, event) => {
     const token = window.localStorage.getItem("token");
     event.preventDefault();
@@ -24,8 +25,13 @@ const Card = ({ plant }) => {
       });
     } else {
       alert("Please log in to add a plant to your garden");
-      window.location.href = "/login"
+      window.location.href = "/login";
     }
+
+
+
+
+    
   };
 
   return (
@@ -47,7 +53,7 @@ const Card = ({ plant }) => {
             </div>
             <div className="col">
               <button onClick={(e) => handleGarden(plant._id, e)}>
-                Add to Garden
+                {updated ? "It's in your garden" : "Add to Garden"}
               </button>
             </div>
           </div>

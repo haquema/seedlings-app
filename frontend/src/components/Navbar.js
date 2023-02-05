@@ -35,6 +35,10 @@ const Navbar = () => {
             <Link to="/home" className=" btn btn-success mx-1 my-2">
               Home
             </Link>
+            <Link to="/identification" className=" btn btn-success mx-1 my-2">
+              Plant Identification
+            </Link>
+
             {window.localStorage.getItem("token") ? (
               <Link
                 to={`/garden/${user}`}

@@ -1,5 +1,5 @@
-const Plant = require('../models/plant_model');
-const mongoose = require('mongoose');
+const Plant = require("../models/plant_model");
+const mongoose = require("mongoose");
 
 // GET all plants
 const getAllPlants = async (req, res) => {
@@ -24,8 +24,6 @@ const getSinglePlant = async (req, res) => {
 
   res.status(200).json(plant);
 };
-
-
 
 module.exports = {
   getAllPlants,
