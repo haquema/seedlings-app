@@ -1,27 +1,32 @@
-import { Link, useRevalidator } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import './Card.css';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import "./Card.css";
 
 const Card = ({ plant }) => {
   const [updated, setUpdated] = useState(null);
-  const [token, setToken] = useState(window.localStorage.getItem('token'));
 
   const handleGarden = (plant_id, event) => {
+    const token = window.localStorage.getItem("token");
     event.preventDefault();
 
-    const user = window.localStorage.getItem('user_id');
-    fetch(`http://localhost:5000/garden/${user}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        plant_id: `${plant_id}`,
-      }),
-    }).then((response) => {
-      setUpdated(true);
-    });
+    const user = window.localStorage.getItem("user_id");
+    if (token) {
+      fetch(`http://localhost:5000/garden/${user}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          plant_id: `${plant_id}`,
+        }),
+      }).then((response) => {
+        setUpdated(true);
+      });
+    } else {
+      alert("Please log in to add a plant to your garden");
+      window.location.href = "/login";
+    }
   };
 
   return (
@@ -48,11 +53,9 @@ const Card = ({ plant }) => {
               </Link>
             </div>
             <div className="col">
-              <button
-                className="btn btn-success btn-sm"
-                onClick={(e) => handleGarden(plant._id, e)}
-              >
-                Add to Garden
+              <button onClick={(e) => handleGarden(plant._id, e)}>
+                {updated ? "It's in your garden" : "Add to Garden"}
+
               </button>
             </div>
           </div>

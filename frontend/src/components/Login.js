@@ -47,6 +47,7 @@ const Login = () => {
       <button type="submit">Log in</button>
       {error && <p>{error}</p>}
     </form>
+    
   );
 };
 export default Login;

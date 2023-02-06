@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 
 const FeedPage = () => {
@@ -9,26 +8,7 @@ const FeedPage = () => {
   const handleClear = () => {
     setSearchTerm('');
   };
-  // const [updated, setUpdated] = useState(false);
-
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': '50b4c8e8c5msh92331c0007a8097p127bd3jsna3504c463ed2',
-  //       'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com',
-  //     },
-  //   };
-
-  //   fetch('https://house-plants2.p.rapidapi.com/all', options)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setPlants(data.slice(0, 12));
-  //       console.log(plants);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
+  
   useEffect(() => {
     fetch('http://localhost:5000/home', {
       method: 'GET',
@@ -60,7 +40,7 @@ const FeedPage = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="form-control bg-light border shadow-lg"
-                placeholder="Search"
+                placeholder="Search for a plant.."
                 aria-label="Search"
                 aria-describedby="search-btn"
                 id="search-input"

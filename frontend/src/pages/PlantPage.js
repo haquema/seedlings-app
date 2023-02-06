@@ -1,6 +1,6 @@
-import SectionSpacer from '../components/SectionSpacer';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import SectionSpacer from "../components/SectionSpacer";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const PlantPage = () => {
   const { id } = useParams();
@@ -8,7 +8,7 @@ const PlantPage = () => {
 
   useEffect(() => {
     fetch(`http://localhost:5000/home/${id}`, {
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -19,25 +19,7 @@ const PlantPage = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': '50b4c8e8c5msh92331c0007a8097p127bd3jsna3504c463ed2',
-  //       'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com',
-  //     },
-  //   };
-
-  //   fetch(`https://house-plants2.p.rapidapi.com/id/${_id}`, options)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setPlant(data);
-  //       // console.log(plant['Height at purchase'].CM);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
+  
   return (
     <>
       <SectionSpacer />
@@ -54,7 +36,7 @@ const PlantPage = () => {
           className="m-5 pb-4 justify-content-start bg-light rounded"
         >
           <img src={plant.img} alt="plant" className="mt-5" />
-        
+
           <p>Name: {plant.name}</p>
 
           <p>Also known as: {plant.knownAs}</p>
@@ -63,7 +45,6 @@ const PlantPage = () => {
 
           <p>Toxic to: {plant.toxicTo}</p>
 
-  
           <p>Minimum Temperature: {plant.minTemp}</p>
 
           <p>Maximum Temperature: {plant.maxTemp}</p>
@@ -71,12 +52,9 @@ const PlantPage = () => {
           <p>Habitat: {plant.habitat}</p>
 
           <p>Pruning Instructions: {plant.pruning}</p>
-
         </div>
 
-     
-         <img src={plant.careimg} alt="care" />
-
+        <img src={plant.careimg} alt="care" />
       </section>
     </>
   );
