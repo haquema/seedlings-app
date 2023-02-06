@@ -14,7 +14,7 @@ const Identification = () => {
         <li>Wait for the image to be analyzed</li>
         <li>View the results and select the most likely match for your plant</li>
       </ol>
-      <ai-taxonomist apiKey=""></ai-taxonomist>
+      <ai-taxonomist apiKey="2b10Rwo6nfbkpgoPtQlsHNGhUe"></ai-taxonomist>
     </div>
   );
 };
