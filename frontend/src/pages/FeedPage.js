@@ -4,11 +4,12 @@ import Card from '../components/Card';
 const FeedPage = () => {
   const [plants, setPlants] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [updated, setUpdated] = useState(null);
 
   const handleClear = () => {
     setSearchTerm('');
   };
-  
+
   useEffect(() => {
     fetch('http://localhost:5000/home', {
       method: 'GET',
@@ -22,9 +23,10 @@ const FeedPage = () => {
             plant.knownAs.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setPlants(filteredPlants);
+        setUpdated(false);
       })
       .catch((err) => console.error(err));
-  }, [searchTerm]);
+  }, [searchTerm, updated]);
 
   return (
     <>
@@ -73,7 +75,7 @@ const FeedPage = () => {
             className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 m-5 pb-4 justify-content-start bg-light rounded"
           >
             {plants.map((plant) => (
-              <Card plant={plant} key={plant._id} />
+              <Card plant={plant} key={plant._id} setUpdated={setUpdated} />
             ))}
           </div>
         )}
