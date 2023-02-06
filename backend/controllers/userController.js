@@ -63,7 +63,7 @@ const updateProfile = async (req, res) => {
   })
 
   const updatedUser = await User.findById(id);
-
+  
   if (!user) {
     return res.status(400).json({error: 'No such user'})
   }
