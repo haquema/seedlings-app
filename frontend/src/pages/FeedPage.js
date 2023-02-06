@@ -67,7 +67,7 @@ const FeedPage = () => {
         <h3 id="info-bar" className="text-center">
           Plant List
         </h3>
-        {plants !== null && (
+        {plants.length !== 0 && (
           <div
             id="card-container"
             className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 m-5 pb-4 justify-content-start bg-light rounded"
@@ -75,7 +75,6 @@ const FeedPage = () => {
             {plants.map((plant) => (
               <Card plant={plant} key={plant._id} />
             ))}
-            {/* <Card /> */}
           </div>
         )}
       </section>

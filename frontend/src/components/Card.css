@@ -1,4 +1,16 @@
-.plant-image {
-  height: 275px !important;
-  width: 275px !important;
+.plant-img {
+  object-fit: cover;
+  object-position: center; /* Center the image within the element */
+  width: 100%;
+
+  /* height: 100%; */
+}
+
+.plant-img-container {
+  height: 100%;
+  height: 325px;
+}
+
+.plant-text-container {
+  height: 150px;
 }
