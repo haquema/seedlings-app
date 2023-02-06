@@ -19,7 +19,13 @@ const Card = ({ plant, setUpdated }) => {
         })
         .catch((err) => console.error(err));
     }
-  }, [token, user, plant._id, garden]);
+  }, [token, user, plant._id]);
+
+  useEffect(() => {
+    if (garden) {
+      setIsSaved(garden.includes(plant._id));
+    }
+  }, [garden, plant._id]);
 
   const handleGarden = async (plant_id, event) => {
     event.preventDefault();
@@ -37,8 +43,9 @@ const Card = ({ plant, setUpdated }) => {
             plant_id: `${plant_id}`,
           }),
         }).then((response) => {
-          // setIsSaved(true);
-          // setUpdated(true);
+          setGarden([...garden, plant_id]);
+          setIsSaved(true);
+          setUpdated(true);
         });
       }
     } else {

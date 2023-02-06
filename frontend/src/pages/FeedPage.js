@@ -54,7 +54,7 @@ const FeedPage = () => {
                 onClick={handleClear}
               >
                 <small>
-                  <i class="bi bi-x-circle"></i> Clear
+                  <i className="bi bi-x-circle"></i> Clear
                 </small>
               </button>
             </div>
