@@ -7,6 +7,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import FeedPage from './pages/FeedPage';
 import ProfilePage from './pages/profilePage';
+import ProfilePageTest from './pages/profilePageTest';
 import PlantPage from './pages/PlantPage';
 import Identification from './pages/PlantIdPage';
 import GardenPage from './pages/gardenPage';
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<FeedPage />} />
           <Route path="/" element={<FeedPage />} />
           <Route path="/profile/:id" element={<ProfilePage navigate={useNavigate()}/>} />
+          <Route path="/profiletest/:id" element={<ProfilePageTest navigate={useNavigate()}/>} />
           <Route path="/plants/:id" element={<PlantPage />} />
           <Route path="/garden/:id" element={<GardenPage />} />
           <Route path="/identification" element={<Identification />} />
