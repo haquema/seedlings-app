@@ -4,7 +4,33 @@ const Garden = () => {
   const [garden, setGarden] = useState([]);
   const user = window.localStorage.getItem("user_id");
   const [updated, setUpdated] = useState([])
+  
 
+
+  const handleReminder = (plantname) => {
+    const email = window.localStorage.getItem("email");
+
+    fetch(`http://localhost:5000/garden/reminder`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, plantname }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return;
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
+  };
+  
+  
   const handleRemovePlant = (plantid) => {
     const user = window.localStorage.getItem("user_id");
     fetch(`http://localhost:5000/garden/${user}/${plantid}`, {
@@ -61,6 +87,9 @@ const Garden = () => {
               </div>
               <button onClick={() => handleRemovePlant(plant._id)}>
                 Remove from Garden
+              </button>
+              <button onClick={() => handleReminder(plant.name)}>
+                Remind me
               </button>
             </div>
           ))}

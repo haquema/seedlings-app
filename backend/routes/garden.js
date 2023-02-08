@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const { profileGarden, addPlant,deletePlantFromGarden } = require('../controllers/gardenController')
 
+
+
 // GET a specific garden/plant collection
 router.get('/:id', profileGarden)
 
@@ -11,5 +13,6 @@ router.patch('/:id', addPlant)
 
 //DELETE to delete specific plant from user garden
 router.delete('/:userid/:plantid', deletePlantFromGarden)
+
 
 module.exports = router

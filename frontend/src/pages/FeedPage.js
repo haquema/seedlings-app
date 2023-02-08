@@ -16,7 +16,6 @@ const FeedPage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
         const filteredPlants = data.filter(
           (plant) =>
             plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

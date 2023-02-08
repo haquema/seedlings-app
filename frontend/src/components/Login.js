@@ -25,6 +25,7 @@ const Login = () => {
       window.localStorage.setItem("token", data.token);
       window.localStorage.setItem("user_id", data.user._id);
       window.localStorage.setItem("user_name", data.user.name);
+      window.localStorage.setItem("email", data.user.email);
       navigate("/home");
     }
   };
