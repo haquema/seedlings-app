@@ -10,6 +10,8 @@ import PlantPage from './pages/PlantPage';
 import Identification from './pages/PlantIdPage';
 import GardenPage from './pages/gardenPage';
 
+
+
 function App() {
   return (
     <>
