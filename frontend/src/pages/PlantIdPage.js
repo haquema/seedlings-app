@@ -1,35 +1,40 @@
-import React from "react";
-import "ai-taxonomist";
-import "../components/Card.css";
+import React from 'react';
+import 'ai-taxonomist';
+import '../components/Card.css';
 
 const Identification = () => {
   return (
-    <div class="container">
-    <div className="col-md-8 mx-auto">
-      <div className="card h-100 shadow-lg border justify-content-center">
-        <div className="card-header bg-primary text-white text-center">
-          <h2 className="mt-3">AI Plant Identification</h2>
+    <>
+      <section className="container-fluid bg-light p-5">
+        <h3 id="info-bar" className="text-center">
+          AI Plant Identification
+        </h3>
+      </section>
+
+      <section
+        id="main-container"
+        className="container-fluid text-center shadow bg-success p-5"
+      >
+        <div className="row justify-content-center">
+          <div className="col-lg-6 bg-light rounded p-5">
+            <p className="text-dark">
+              To identify a plant, please follow these steps:
+            </p>
+            <ol>
+              <li className="text-dark">
+                Click the "Upload Image" button to select an image of your plant
+              </li>
+              <li className="text-dark">Wait for the image to be analysed</li>
+              <li className="text-dark">
+                View the results and select the most likely match for your plant
+              </li>
+              <br></br>
+            </ol>
+            <ai-taxonomist apiKey="2b10Rwo6nfbkpgoPtQlsHNGhUe"></ai-taxonomist>
+          </div>
         </div>
-        <div className="card-body bg-light rounded p-3">
-          <p className="text-muted">
-            To identify a plant, please follow these steps:
-          </p>
-          <ol>
-            <li className="text-muted">
-              Click the "Upload Image" button to select an image of your plant
-            </li>
-            <li className="text-muted">Wait for the image to be analysed</li>
-            <li className="text-muted">
-              View the results and select the most likely match for your plant
-            </li>
-            <br>
-            </br>
-          </ol>
-          <ai-taxonomist apiKey="2b10Rwo6nfbkpgoPtQlsHNGhUe"></ai-taxonomist>
-        </div>
-      </div>
-    </div>
-    </div>
+      </section>
+    </>
   );
 };
 export default Identification;
