@@ -48,7 +48,7 @@ const Signup = ({ navigate }) => {
             <h3 className="text-center">Enter your details</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label for="email" className="form-label">
+                <label htmlFor="email" className="form-label">
                   Email
                 </label>
                 <input
@@ -63,7 +63,7 @@ const Signup = ({ navigate }) => {
                 />
               </div>
               <div className="mb-3">
-                <label for="password" className="form-label">
+                <label htmlFor="password" className="form-label">
                   Password
                 </label>
                 <input
@@ -78,7 +78,7 @@ const Signup = ({ navigate }) => {
                 />
               </div>
               <div className="mb-3">
-                <label for="username" className="form-label">
+                <label htmlFor="username" className="form-label">
                   Username
                 </label>
                 <input
@@ -93,7 +93,7 @@ const Signup = ({ navigate }) => {
                 />
               </div>
               <div className="mb-3">
-                <label for="fullName" className="form-label">
+                <label htmlFor="fullName" className="form-label">
                   Full name
                 </label>
                 <input
@@ -108,7 +108,7 @@ const Signup = ({ navigate }) => {
                 />
               </div>
               <div className="mb-3">
-                <label for="address" className="form-label">
+                <label htmlFor="address" className="form-label">
                   Address
                 </label>
                 <input

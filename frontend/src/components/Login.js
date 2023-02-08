@@ -22,13 +22,11 @@ const Login = () => {
       setError(data.error);
       navigate('/login');
     } else {
-
-      window.localStorage.setItem("token", data.token);
-      window.localStorage.setItem("user_id", data.user._id);
-      window.localStorage.setItem("user_name", data.user.name);
-      window.localStorage.setItem("email", data.user.email);
-      navigate("/home");
-
+      window.localStorage.setItem('token', data.token);
+      window.localStorage.setItem('user_id', data.user._id);
+      window.localStorage.setItem('user_name', data.user.name);
+      window.localStorage.setItem('email', data.user.email);
+      navigate('/home');
     }
   };
 
@@ -46,7 +44,7 @@ const Login = () => {
             <h3 className="text-center">Enter your details</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label for="email" className="form-label">
+                <label htmlFor="email" className="form-label">
                   Email
                 </label>
                 <input
@@ -61,7 +59,7 @@ const Login = () => {
               </div>
 
               <div className="mb-3">
-                <label for="password" className="form-label">
+                <label htmlFor="password" className="form-label">
                   Password
                 </label>
                 <input
