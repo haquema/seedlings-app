@@ -1,0 +1,16 @@
+.garden-img {
+  object-fit: cover;
+  object-position: center; /* Center the image within the element */
+  width: 100%;
+
+  /* height: 100%; */
+}
+
+.garden-img-container {
+  /* height: 100%; */
+  height: 400px;
+}
+
+.garden-text-container {
+  height: 525px;
+}

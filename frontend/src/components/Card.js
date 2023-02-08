@@ -55,7 +55,7 @@ const Card = ({ plant, setUpdated }) => {
   };
   return (
     <div className="col">
-      <div className="card h-100 shadow-lg border justify-content-center">
+      <div className="card h-100 shadow border justify-content-center">
         <div className="card-img-top plant-img-container d-flex">
           <img src={plant.img} className="plant-img " alt={'plant'} />
         </div>
@@ -76,9 +76,29 @@ const Card = ({ plant, setUpdated }) => {
               </Link>
             </div>
             <div className="col">
-              <button onClick={(e) => handleGarden(plant._id, e)}>
-                {isSaved ? "It's already in your garden" : 'Add to Garden'}
-              </button>
+              {isSaved ? (
+                <button
+                  onClick={(e) => handleGarden(plant._id, e)}
+                  className="btn btn-sm btn-secondary"
+                  disabled
+                >
+                  In your garden
+                </button>
+              ) : (
+                <button
+                  onClick={(e) => handleGarden(plant._id, e)}
+                  className="btn btn-sm btn-success"
+                >
+                  Add to garden
+                </button>
+              )}
+
+              {/* <button
+                onClick={(e) => handleGarden(plant._id, e)}
+                className="btn btn-sm btn-success"
+              >
+                {isSaved ? 'In your garden' : 'Add to Garden'}
+              </button> */}
             </div>
           </div>
         </div>
