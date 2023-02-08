@@ -45,7 +45,7 @@ const getProfile = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   const { id } = req.params;
-  // const { email } = req.body;
+  const { email, username, fullName, address, password } = req.body;
 
   //validating email entries
   // if (!validator.isEmail(email)) {
@@ -55,11 +55,17 @@ const updateProfile = async (req, res) => {
   // if (exists) {
   //   return res.status(400).json({error: "Email already in use"});
   // }
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
 
   const user = await User.findByIdAndUpdate(
     { _id: id },
     {
-      ...req.body,
+      email,
+      username,
+      fullName,
+      address,
+      password: hash,
     }
   );
 

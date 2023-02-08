@@ -18,15 +18,14 @@ const ProfilePageTest = ({ navigate }) => {
       .catch((err) => console.error(err));
   }, []);
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [address, setAddress] = useState('');
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [fullName, setFullName] = useState(user.fullName);
+  const [address, setAddress] = useState(user.address);
+  const [password, setPassword] = useState(user.password);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const userData = { email, username, fullName, address };
+  const handleSubmit = async () => {
+    const userData = { email, username, fullName, address, password };
 
     try {
       let response = await fetch(`http://localhost:5000/${id}`, {
@@ -42,7 +41,7 @@ const ProfilePageTest = ({ navigate }) => {
         setError(data.error);
       } else {
         setError('');
-        navigate(`/profiletest/${id}`);
+        // navigate(`/profiletest/${id}`);
       }
     } catch (error) {
       console.error(error);
@@ -51,8 +50,8 @@ const ProfilePageTest = ({ navigate }) => {
 
   return (
     <>
-      <div className="container p-5">
-        <div className="profile-details">
+      <section className="p-5 bg-light ">
+        <div className="text-center">
           <h3>Current Details</h3>
           <div>
             <p>Email: {user.email}</p>
@@ -61,68 +60,90 @@ const ProfilePageTest = ({ navigate }) => {
             <p>Address: {user.address}</p>
           </div>
         </div>
-        <h3>Update your details</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label for="email" className="form-label">
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+      </section>
+
+      <div className="container-fluid bg-success p-5">
+        <div className="row justify-content-center">
+          <div className="col-lg-6 border shadow rounded p-5 bg-light">
+            <h3 className="text-center">Update your details</h3>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label for="email" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label for="username" className="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  aria-describedby="userHelp"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label for="fullName" className="form-label">
+                  Full name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="fullName"
+                  aria-describedby="fullNameHelp"
+                  placeholder="Enter full name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label for="address" className="form-label">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  aria-describedby="addressNameHelp"
+                  placeholder="Enter address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label for="password" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  aria-describedby="passwordNameHelp"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button type="submit" className="btn btn-success">
+                Save
+              </button>
+              {error && <p>{error}</p>}
+            </form>
           </div>
-          <div className="mb-3">
-            <label for="username" className="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              aria-describedby="userHelp"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="fullName" className="form-label">
-              Full name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="fullName"
-              aria-describedby="fullNameHelp"
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="address" className="form-label">
-              address
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="address"
-              aria-describedby="addressNameHelp"
-              placeholder="Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+        </div>
       </div>
 
       {/* <form id="update_form" onSubmit={handleSubmit}>
