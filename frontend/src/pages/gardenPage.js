@@ -3,11 +3,9 @@ import "../components/Card.css";
 const Garden = () => {
   const [garden, setGarden] = useState([]);
   const user = window.localStorage.getItem("user_id");
-  const [updated, setUpdated] = useState([])
-  
+  const [updated, setUpdated] = useState([]);
 
-
-  const handleReminder = (plantname) => {
+  const handleReminder = (plantname, interval) => {
     const email = window.localStorage.getItem("email");
 
     fetch(`http://localhost:5000/garden/reminder`, {
@@ -15,7 +13,7 @@ const Garden = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, plantname }),
+      body: JSON.stringify({ email, plantname, interval }),
     })
       .then((response) => {
         if (response.ok) {
@@ -29,8 +27,7 @@ const Garden = () => {
       })
       .catch((err) => console.error(err));
   };
-  
-  
+
   const handleRemovePlant = (plantid) => {
     const user = window.localStorage.getItem("user_id");
     fetch(`http://localhost:5000/garden/${user}/${plantid}`, {
@@ -41,7 +38,7 @@ const Garden = () => {
     })
       .then((response) => {
         if (response.ok) {
-          setUpdated(true)
+          setUpdated(true);
           return response.json();
         } else {
           throw new Error("Something went wrong");
@@ -49,7 +46,7 @@ const Garden = () => {
       })
       .then((data) => {
         setGarden(data.garden);
-        setUpdated(false)
+        setUpdated(false);
       })
       .catch((err) => console.error(err));
   };
@@ -59,10 +56,9 @@ const Garden = () => {
       .then((response) => response.json())
       .then((data) => {
         setGarden(data.garden);
-
       })
       .catch((err) => console.error(err));
-  },[user,updated]);
+  }, [user, updated]);
 
   return (
     <div className="garden">
@@ -88,9 +84,18 @@ const Garden = () => {
               <button onClick={() => handleRemovePlant(plant._id)}>
                 Remove from Garden
               </button>
-              <button onClick={() => handleReminder(plant.name)}>
-                Remind me
-              </button>
+              <div>
+                Remind me to water:{" "}
+                <select
+                  onChange={(event) =>
+                    handleReminder(plant.name, event.target.value)
+                  }
+                >
+                  <option value="onceADay">Once a Day</option>
+                  <option value="twiceADay">Twice a Day</option>
+                  <option value="minute">Every Minute</option>
+                </select>
+              </div>
             </div>
           ))}
         </div>
@@ -98,7 +103,7 @@ const Garden = () => {
         <div className="text-center">
           <div>
             <h2>You have nothing in your garden, add some plants! </h2>
-            </div>
+          </div>
         </div>
       )}
     </div>
