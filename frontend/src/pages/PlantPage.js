@@ -19,24 +19,7 @@ const PlantPage = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': '50b4c8e8c5msh92331c0007a8097p127bd3jsna3504c463ed2',
-  //       'X-RapidAPI-Host': 'house-plants2.p.rapidapi.com',
-  //     },
-  //   };
 
-  //   fetch(`https://house-plants2.p.rapidapi.com/id/${_id}`, options)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setPlant(data);
-  //       // console.log(plant['Height at purchase'].CM);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
 
   return (
     <>

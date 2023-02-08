@@ -1,7 +1,7 @@
 const express = require("express");
 const TokensController = require("../controllers/tokenController");
 
-const { loginUser, signupUser, getProfile, deletePlantFromGarden } = require('../controllers/userController')
+const { loginUser, signupUser, getProfile} = require('../controllers/userController')
 
 const router = express.Router();
 
