@@ -76,12 +76,29 @@ const Card = ({ plant, setUpdated }) => {
               </Link>
             </div>
             <div className="col">
-              <button
+              {isSaved ? (
+                <button
+                  onClick={(e) => handleGarden(plant._id, e)}
+                  className="btn btn-sm btn-secondary"
+                  disabled
+                >
+                  In your garden
+                </button>
+              ) : (
+                <button
+                  onClick={(e) => handleGarden(plant._id, e)}
+                  className="btn btn-sm btn-success"
+                >
+                  Add to garden
+                </button>
+              )}
+
+              {/* <button
                 onClick={(e) => handleGarden(plant._id, e)}
                 className="btn btn-sm btn-success"
               >
                 {isSaved ? 'In your garden' : 'Add to Garden'}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
