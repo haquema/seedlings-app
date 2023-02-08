@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cron = require("node-cron")
 const sgMail = require("@sendgrid/mail");
 const apiKey = `${process.env.SENDGRID_API_KEY}`;
 console.log("SendGrid key ", apiKey);
@@ -10,9 +11,9 @@ console.log(emailFrom)
 const sendReminder = async (req, res) => {
 
 
- sgMail.setApiKey(apiKey);    
-
  const {email,plantname} = req.body
+
+ sgMail.setApiKey(apiKey);   
 
  console.log(req.body)
 
