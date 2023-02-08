@@ -1,22 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const handleLogout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("user_id");
-    window.localStorage.removeItem("user_name");
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user_id');
+    window.localStorage.removeItem('user_name');
   };
 
-  const user = window.localStorage.getItem("user_id");
+  const user = window.localStorage.getItem('user_id');
 
   return (
-    <nav className="navbar navbar-expand-lg bg-success border me-auto p-3">
+    <nav className="navbar navbar-expand-lg bg-success bg-gradient me-auto p-3">
       <div className="container">
         <div className="navbar-brand ">
           <img
-            src={"/images/logo-w.png"}
+            src={'/images/logo-w.png'}
             alt="logo"
-            style={{ maxWidth: "200px" }}
+            style={{ maxWidth: '200px' }}
           />
         </div>
         <button
@@ -39,7 +39,7 @@ const Navbar = () => {
               Plant Identification
             </Link>
 
-            {window.localStorage.getItem("token") ? (
+            {window.localStorage.getItem('token') ? (
               <Link
                 to={`/garden/${user}`}
                 className="btn btn-success mx-1 my-2"
@@ -47,7 +47,7 @@ const Navbar = () => {
                 My Garden Patch
               </Link>
             ) : null}
-            {window.localStorage.getItem("token") ? (
+            {window.localStorage.getItem('token') ? (
               <Link
                 to="/login"
                 className="btn btn-success mx-1 my-2"
