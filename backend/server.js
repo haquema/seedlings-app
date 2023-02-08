@@ -1,22 +1,23 @@
+require('dotenv').config();
+
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const plantRouter = require('./routes/plant');
 const gardenRouter = require('./routes/garden');
 const usersRouter = require('./routes/user');
 const reminderRouter = require('./routes/reminder');
+const cors = require('cors');
 
-require('dotenv').config(); //configures to allow you to have the env variables in the dotenv file 
 
 const app = express();
-const port = process.env.PORT || 5000; //creates express server with a defined port number
-
 
 app.use(cors());
-app.use(express.json()); //middleware - allows server to parse JSON when sending a receiving requests
+app.use(express.json())
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
+app.use((req,res,next) => {
+  console.log(req.path, req.method)
+  next()
+})
 
 // routes
 app.use('/home', plantRouter)
@@ -25,13 +26,23 @@ app.use('/garden', gardenRouter)
 app.use('/garden/reminder',reminderRouter)
 
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
+// connect to db
+if (process.env.NODE_ENV === 'test') {
+  mongodbUrl = process.env.TEST;
+} else {
+  mongodbUrl = process.env.MONGO_URI;
+}
 
- 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`); //starts the server on the specified port
-});
+mongoose.connect(mongodbUrl)
+  .then(() => {
+    // listen for requests
+    console.log(mongodbUrl)
+    app.listen(process.env.PORT, () => {
+      console.log('connected to db & listening on port', process.env.PORT)
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 
+module.exports = app;
