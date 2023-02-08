@@ -1,10 +1,31 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import './GardenCard.css';
 
 const GardenCard = ({ plant, setUpdated, setGarden }) => {
   const token = window.localStorage.getItem('token');
   const user = window.localStorage.getItem('user_id');
+  const email = window.localStorage.getItem('email');
+
+  const handleReminder = (plantname, interval) => {
+    fetch(`http://localhost:5000/garden/reminder`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, plantname, interval }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setUpdated(true);
+          return;
+        } else {
+          throw new Error('Something went wrong');
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   const handleRemovePlant = () => {
     fetch(`http://localhost:5000/garden/${user}/${plant._id}`, {
@@ -52,15 +73,25 @@ const GardenCard = ({ plant, setUpdated, setGarden }) => {
           </p>
         </div>
         <div className="card-footer">
-          <div className="row">
-            {/* <div className="col">
-              <Link
-                to={`/plants/${plant._id}`}
-                className="btn btn-success btn-sm"
+          <div className="row justify-content-center">
+            <div className="col-8">
+              <h6 className="small">Remind me to water</h6>
+              <select
+                className="form-select text-center form-select-sm"
+                onChange={(event) =>
+                  handleReminder(plant.name, event.target.value)
+                }
               >
-                View details
-              </Link>
-            </div> */}
+                <option value="onceADay">Once a Day</option>
+                <option value="twiceADay">Twice a Day</option>
+                <option value="minute">Every Minute</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className="card-footer">
+          <div className="row">
             <div className="col">
               <button
                 className="btn btn-success btn-sm"
