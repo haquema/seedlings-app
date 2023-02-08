@@ -10,7 +10,7 @@ const Navbar = () => {
   const user = window.localStorage.getItem('user_id');
 
   return (
-    <nav className="navbar navbar-expand-lg bg-success bg-gradient border me-auto p-3">
+    <nav className="navbar navbar-expand-lg bg-success bg-gradient me-auto p-3">
       <div className="container">
         <div className="navbar-brand ">
           <img
