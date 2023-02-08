@@ -33,10 +33,11 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
             <Link to="/home" className=" btn btn-success mx-1 my-2">
-              Home
+              <i className="fa-solid fa-grip"></i> Home
             </Link>
             <Link to="/identification" className=" btn btn-success mx-1 my-2">
-              Plant Identification
+              <i className="fa-solid fa-magnifying-glass"></i> Plant
+              Identification
             </Link>
 
             {window.localStorage.getItem('token') ? (
@@ -44,7 +45,7 @@ const Navbar = () => {
                 to={`/garden/${user}`}
                 className="btn btn-success mx-1 my-2"
               >
-                My Garden Patch
+                <i className="fa-solid fa-seedling"></i> My Garden Patch
               </Link>
             ) : null}
 
@@ -53,7 +54,7 @@ const Navbar = () => {
                 to={`/profile/${user}`}
                 className=" btn btn-success mx-1 my-2"
               >
-                Update My Details
+                <i className="fa-solid fa-pen-to-square"></i> Update My Details
               </Link>
             )}
 
@@ -63,15 +64,15 @@ const Navbar = () => {
                 className="btn btn-success mx-1 my-2"
                 onClick={handleLogout}
               >
-                Logout
+                <i className="fa-solid fa-right-from-bracket"></i> Logout
               </Link>
             ) : (
               <>
                 <Link to="/login" className="btn btn-success mx-1 my-2">
-                  Login
+                  <i className="fa-solid fa-right-to-bracket"></i> Login
                 </Link>
                 <Link to="/signup" className="btn btn-success mx-1 my-2">
-                  Sign Up
+                  <i className="fa-solid fa-user-plus"></i> Sign Up
                 </Link>
               </>
             )}

@@ -53,7 +53,7 @@ const FeedPage = () => {
                 onClick={handleClear}
               >
                 <small>
-                  <i className="bi bi-x-circle"></i> Clear
+                  <i className="fa-solid fa-square-xmark"></i> Clear
                 </small>
               </button>
             </div>
