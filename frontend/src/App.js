@@ -9,13 +9,12 @@ import FeedPage from './pages/FeedPage';
 import PlantPage from './pages/PlantPage';
 import Identification from './pages/PlantIdPage';
 import GardenPage from './pages/gardenPage';
-
-
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
     <>
-<Navbar />
+      <Navbar />
       <div>
         <Routes>
           <Route path="/signup" element={<Signup navigate={useNavigate()} />} />
@@ -25,6 +24,10 @@ function App() {
           <Route path="/plants/:id" element={<PlantPage />} />
           <Route path="/garden/:id" element={<GardenPage />} />
           <Route path="/identification" element={<Identification />} />
+          <Route
+            path="/profile/:id"
+            element={<ProfilePage navigate={useNavigate()} />}
+          />
         </Routes>
       </div>
     </>

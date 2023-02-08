@@ -47,6 +47,16 @@ const Navbar = () => {
                 My Garden Patch
               </Link>
             ) : null}
+
+            {user && (
+              <Link
+                to={`/profile/${user}`}
+                className=" btn btn-success mx-1 my-2"
+              >
+                Update My Details
+              </Link>
+            )}
+
             {window.localStorage.getItem('token') ? (
               <Link
                 to="/login"
