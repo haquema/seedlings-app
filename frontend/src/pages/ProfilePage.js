@@ -5,6 +5,7 @@ const ProfilePage = ({ navigate }) => {
   const { id } = useParams();
   const [user, setUser] = useState([]);
   const [error, setError] = useState('');
+  // const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/${id}`, {
@@ -14,6 +15,7 @@ const ProfilePage = ({ navigate }) => {
       .then((data) => {
         setUser(data.user);
         console.log(data);
+        // setUpdated(false);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -25,6 +27,7 @@ const ProfilePage = ({ navigate }) => {
   const [password, setPassword] = useState(user.password);
 
   const handleSubmit = async () => {
+    // e.preventDefault();
     const userData = { email, username, fullName, address, password };
 
     try {
@@ -41,7 +44,8 @@ const ProfilePage = ({ navigate }) => {
         setError(data.error);
       } else {
         setError('');
-        // navigate(`/profiletest/${id}`);
+
+        // navigate(`/profile/${id}`);
       }
     } catch (error) {
       console.error(error);

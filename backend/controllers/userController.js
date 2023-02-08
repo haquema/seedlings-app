@@ -1,6 +1,8 @@
 const TokenGenerator = require('../models/token_generator');
 const User = require('../models/user_model');
 const Plant = require('../models/plant_model');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
@@ -75,4 +77,4 @@ const updateProfile = async (req, res) => {
   res.status(200).json({ message: 'OK', user: updatedUser });
 };
 
-module.exports = { signupUser, loginUser, getProfile };
+module.exports = { signupUser, loginUser, getProfile, updateProfile };
