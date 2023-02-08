@@ -31,7 +31,6 @@ const addPlant = async (req, res) => {
     .json({ message: 'OK', token: token, garden: user.userGardenPatch });
 };
 
-//DELETE single plant from garden
 
 const deletePlantFromGarden = async (req, res) => {
   const { userid } = req.params;
