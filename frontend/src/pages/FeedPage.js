@@ -10,6 +10,13 @@ const FeedPage = () => {
     setSearchTerm('');
   };
 
+  const handlePressEnter = (e) => {
+    //it triggers by pressing the enter key
+    if (e.key === 'Enter') {
+      handleClear();
+    }
+  };
+
   useEffect(() => {
     fetch('http://localhost:5000/home', {
       method: 'GET',
@@ -45,6 +52,7 @@ const FeedPage = () => {
                 aria-label="Search"
                 aria-describedby="search-btn"
                 id="search-input"
+                onKeyDown={(e) => handlePressEnter(e)}
               />
               <button
                 className="btn btn-success border text-light fw-bold"
