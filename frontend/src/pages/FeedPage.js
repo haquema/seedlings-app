@@ -12,6 +12,13 @@ const FeedPage = () => {
     setSearchTerm('');
   };
 
+  const handlePressEnter = (e) => {
+    //it triggers by pressing the enter key
+    if (e.key === 'Enter') {
+      handleClear();
+    }
+  };
+
   useEffect(() => {
     fetch('http://localhost:5000/home', {
       method: 'GET',
@@ -31,7 +38,38 @@ const FeedPage = () => {
 
   
   return (
-      <><>
+    <>
+      <section className="container-fluid bg-light p-4">
+        <h3 id="info-bar" className="text-center mb-4">
+          Welcome!
+        </h3>
+        <div className="row justify-content-center">
+          <div className="col-9 col-sm-7 col-md-5 col-lg-3 mb-3">
+            <div className="input-group">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="form-control bg-light border shadow-lg"
+                placeholder="Search for a plant.."
+                aria-label="Search"
+                aria-describedby="search-btn"
+                id="search-input"
+                onKeyDown={(e) => handlePressEnter(e)}
+              />
+              <button
+                className="btn btn-success border text-light fw-bold"
+                type="button"
+                id="search-btn"
+                onClick={handleClear}
+              >
+                <small>
+                  <i className="fa-solid fa-square-xmark"></i> Clear
+                </small>
+              </button>
+            </div>
+
+      <>
       <section className="container-fluid bg-light p-4" style={{padding: '50px'}}>
         <h2 id="info-bar" className="text-center mb-10">
           &#127793; The ultimate plant care companion &#127793;
@@ -64,29 +102,7 @@ const FeedPage = () => {
           </Carousel.Item>
         </Carousel>
       </section>
-    
-      <div className="row justify-content-center mt-5">
-        <div className="col-9 col-sm-7 col-md-5 col-lg-3 mb-3">
-          <div className="input-group">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="form-control bg-light border shadow-lg"
-              placeholder="Search for a plant.."
-              aria-label="Search"
-              aria-describedby="search-btn"
-              id="search-input" />
-            <button
-              className="btn btn-success border text-light fw-bold"
-              type="button"
-              id="search-btn"
-              onClick={handleClear}
-            >
-              <small>
-                <i className="bi bi-x-circle"></i> Clear
-              </small>
-            </button>
+
           </div>
         </div>
       </div>
