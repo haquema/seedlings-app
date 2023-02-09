@@ -6,26 +6,28 @@ const Garden = () => {
   const [garden, setGarden] = useState([]);
   const user = window.localStorage.getItem('user_id');
   const [updated, setUpdated] = useState(false);
+  const name = window.localStorage.getItem("user_name");
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(`http://localhost:5000/garden/${user}`)
       .then((response) => response.json())
       .then((data) => {
         setGarden(data.garden);
+        setLoading(false)
         setUpdated(false);
+      
       })
       .catch((err) => console.error(err));
   }, [updated]);
 
   return (
     <>
-      <section className="container-fluid bg-light p-5">
-        <h3 id="info-bar" className="text-center">
-          {garden.length !== 0
-            ? 'My Garden Patch'
-            : 'You have nothing in your garden, add some plants!'}
-        </h3>
-      </section>
+    <section className="container-fluid bg-light p-5">
+    <h3 id="info-bar" className="text-center">
+      {loading ? 'Loading...' : garden.length !== 0 ? `${name}'s Virtual Garden` : 'You have nothing in your garden, add some plants!'}
+    </h3>
+  </section>
 
       <section
         id="main-container"

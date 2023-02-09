@@ -5,6 +5,7 @@ const SectionSpacer = () => {
         Welcome!
       </h3>
       <div className="row justify-content-center">
+      
         <div className="col-10 col-sm-8 col-md-6 col-lg-4 mb-3">
           <div className="input-group">
             <input
