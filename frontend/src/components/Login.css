@@ -1,0 +1,12 @@
+.login-container {
+  /* background-color: #e6f1ff; */
+  background-image: url('/Users/henrow/Desktop/projects/seedlings-app/frontend/public/images/signup-background-1.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 20%;
+  background-size: cover;
+  color: #323840;
+  /* height: 1148px; */
+  width: 100%;
+  margin: 0;
+}

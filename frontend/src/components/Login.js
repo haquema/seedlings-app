@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import image from "../components/signup-background-2.jpeg"
-
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,31 +23,24 @@ const Login = () => {
       setError(data.error);
       navigate('/login');
     } else {
-
-
-      window.localStorage.setItem("token", data.token);
-      window.localStorage.setItem("user_id", data.user._id);
-      window.localStorage.setItem("user_name", data.user.username);
-      window.localStorage.setItem("email", data.user.email);
-      navigate("/home");
+      window.localStorage.setItem('token', data.token);
+      window.localStorage.setItem('user_id', data.user._id);
+      window.localStorage.setItem('user_name', data.user.name);
+      window.localStorage.setItem('email', data.user.email);
+      navigate('/home');
     }
   };
 
   return (
-    
     <>
-      <section className="container-fluid bg-light p-5">
-        <h3 id="info-bar" className="text-center">
-          Login
-        </h3>
+      <section className="container-fluid bg-light p-5 login-container">
+        <h3 id="info-bar" className="text-center"></h3>
       </section>
 
-      <div className="container-fluid">
-        <div className="row">
-        <div className="col-lg-6 bg-success d-flex justify-content-center align-items-center">
-      <img src={image} alt="Login Illustration" />
-    </div>
-          <div className="col-lg-6 border shadow rounded p-5 bg-light d-flex align-items-center">
+      <div className="container-fluid bg-success p-5 login-container">
+        <div className="row justify-content-center">
+          <div className="col-lg-6 border shadow rounded p-5 bg-light">
+            <h3 className="text-center">Login</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
@@ -88,6 +80,24 @@ const Login = () => {
         </div>
       </div>
     </>
+
+    // <form className="login" onSubmit={handleSubmit}>
+    //   <h3>Log In</h3>
+    //   <input
+    //     placeholder="Email"
+    //     type="email"
+    //     onChange={(e) => setEmail(e.target.value)}
+    //     value={email}
+    //   />
+    //   <input
+    //     placeholder="Password"
+    //     type="password"
+    //     onChange={(e) => setPassword(e.target.value)}
+    //     value={password}
+    //   />
+    //   <button type="submit">Log in</button>
+    //   {error && <p>{error}</p>}
+    // </form>
   );
 };
 export default Login;
