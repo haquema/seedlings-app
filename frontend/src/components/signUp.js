@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './signUp.css';
 
 const Signup = ({ navigate }) => {
   const [username, setUsername] = useState('');
@@ -36,16 +37,14 @@ const Signup = ({ navigate }) => {
 
   return (
     <>
-      <section className="container-fluid bg-light p-5">
-        <h3 id="info-bar" className="text-center">
-          Sign Up
-        </h3>
+      <section className="container-fluid bg-light p-5 signup-container">
+        <h3 id="info-bar" className="text-center"></h3>
       </section>
 
-      <div className="container-fluid bg-success p-5">
+      <div className="container-fluid bg-success p-5 signup-container">
         <div className="row justify-content-center">
           <div className="col-lg-6 border shadow rounded p-5 bg-light">
-            <h3 className="text-center">Enter your details</h3>
+            <h3 className="text-center">Sign Up</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
