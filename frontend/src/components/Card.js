@@ -72,7 +72,7 @@ const Card = ({ plant, setUpdated }) => {
                 to={`/plants/${plant._id}`}
                 className="btn btn-success btn-sm"
               >
-                View details
+                View details &#128270;
               </Link>
             </div>
             <div className="col">
@@ -89,7 +89,7 @@ const Card = ({ plant, setUpdated }) => {
                   onClick={(e) => handleGarden(plant._id, e)}
                   className="btn btn-sm btn-success"
                 >
-                  Add to garden
+                  Add to garden &#129293;
                 </button>
               )}
 

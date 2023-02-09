@@ -82,9 +82,9 @@ const GardenCard = ({ plant, setUpdated, setGarden }) => {
                   handleReminder(plant.name, event.target.value)
                 }
               >
-                <option value="onceADay">Once a Day</option>
-                <option value="twiceADay">Twice a Day</option>
-                <option value="minute">Every Minute</option>
+                <option value="onceADay">Once a Day &#128167;</option>
+                <option value="twiceADay">Twice a Day &#128167;&#128167;</option>
+                <option value="minute">Every Minute &#128167; &#128167; &#128167; </option>
               </select>
             </div>
           </div>

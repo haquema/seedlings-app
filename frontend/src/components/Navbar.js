@@ -44,7 +44,7 @@ const Navbar = () => {
                 to={`/garden/${user}`}
                 className="btn btn-success mx-1 my-2"
               >
-                My Garden Patch
+                My Garden
               </Link>
             ) : null}
 

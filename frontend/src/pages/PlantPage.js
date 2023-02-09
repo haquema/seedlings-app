@@ -1,4 +1,3 @@
-import SectionSpacer from '../components/SectionSpacer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -25,7 +24,7 @@ const PlantPage = () => {
     <>
       <section className="container-fluid bg-light p-5">
         <h3 id="info-bar" className="text-center">
-          Plant Details
+        {plant.name}
         </h3>
       </section>
 
@@ -61,12 +60,12 @@ const PlantPage = () => {
                     </p>
 
                     <p>
-                      <span className="fw-bold">Minimum Temperature: </span>
+                      <span className="fw-bold">Min Temp: </span>
                       {plant.minTemp}°C
                     </p>
 
                     <p>
-                      <span className="fw-bold">Maximum Temperature: </span>
+                      <span className="fw-bold">Max Temp: </span>
                       {plant.maxTemp}°C
                     </p>
 
@@ -92,28 +91,3 @@ const PlantPage = () => {
 
 export default PlantPage;
 
-{
-  /* <img src={plant.img} alt="plant" className="mt-5" />
-        
-        <p>Name: {plant.name}</p>
-
-        <p>Also known as: {plant.knownAs}</p>
-
-        <p>Description: {plant.description}</p>
-
-        <p>Toxic to: {plant.toxicTo}</p>
-
-
-        <p>Minimum Temperature: {plant.minTemp}</p>
-
-        <p>Maximum Temperature: {plant.maxTemp}</p>
-
-        <p>Habitat: {plant.habitat}</p>
-
-        <p>Pruning Instructions: {plant.pruning}</p>
-
-  
-
-   
-       <img src={plant.careimg} alt="care" /> */
-}

@@ -5,7 +5,7 @@ const ProfilePage = ({ navigate }) => {
   const { id } = useParams();
   const [user, setUser] = useState([]);
   const [error, setError] = useState('');
-  // const [updated, setUpdated] = useState(false);
+  const name = window.localStorage.getItem("user_name");
 
   useEffect(() => {
     fetch(`http://localhost:5000/${id}`, {
@@ -27,7 +27,7 @@ const ProfilePage = ({ navigate }) => {
   const [password, setPassword] = useState(user.password);
 
   const handleSubmit = async () => {
-    // e.preventDefault();
+    
     const userData = { email, username, fullName, address, password };
 
     try {
@@ -45,7 +45,7 @@ const ProfilePage = ({ navigate }) => {
       } else {
         setError('');
 
-        // navigate(`/profile/${id}`);
+        
       }
     } catch (error) {
       console.error(error);
@@ -56,7 +56,7 @@ const ProfilePage = ({ navigate }) => {
     <>
       <section className="p-5 bg-light ">
         <div className="text-center">
-          <h3>Current Details</h3>
+          <h3>My Account</h3>
           <div>
             <p>Email: {user.email}</p>
             <p>Username: {user.username}</p>

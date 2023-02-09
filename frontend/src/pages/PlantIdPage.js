@@ -1,34 +1,36 @@
-import React from 'react';
-import 'ai-taxonomist';
-import '../components/Card.css';
+import React from "react";
+import "ai-taxonomist";
+import "../components/Card.css";
 
 const Identification = () => {
   return (
     <>
       <section className="container-fluid bg-light p-5">
-        <h3 id="info-bar" className="text-center">
-          AI Plant Identification
-        </h3>
+        <h2 id="info-bar" className="text-center">
+          &#128300; Identify a Plant
+        </h2>
       </section>
 
       <section
         id="main-container"
-        className="container-fluid text-center shadow bg-success p-5"
+        className="container-fluid  shadow bg-success p-5"
       >
         <div className="row justify-content-center">
           <div className="col-lg-6 bg-light rounded p-5">
-            <p className="text-dark">
-              To identify a plant, please follow these steps:
+            <h3 className="text-dark font-weight-bold mb-4">
+              Plant Identification Guide
+            </h3>
+            <p className="text-dark font-size-large mb-4">
+              Follow these simple steps to identify your plant:
             </p>
-            <ol>
-              <li className="text-dark">
+            <ol className="text-dark font-size-medium mb-4">
+              <li>
                 Click the "Upload Image" button to select an image of your plant
               </li>
-              <li className="text-dark">Wait for the image to be analysed</li>
-              <li className="text-dark">
+              <li>Wait for the image to be analysed</li>
+              <li>
                 View the results and select the most likely match for your plant
               </li>
-              <br></br>
             </ol>
             <ai-taxonomist apiKey="2b10Rwo6nfbkpgoPtQlsHNGhUe"></ai-taxonomist>
           </div>
