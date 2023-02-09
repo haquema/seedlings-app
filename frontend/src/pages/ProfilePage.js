@@ -7,6 +7,14 @@ const ProfilePage = ({ navigate }) => {
   const [error, setError] = useState('');
   const name = window.localStorage.getItem('user_name');
 
+  // const [username, setUsername] = useState(user.username);
+  // const [email, setEmail] = useState(user.email);
+  // const [fullName, setFullName] = useState(user.fullName);
+  // const [address, setAddress] = useState(user.address);
+  // const [password, setPassword] = useState(user.password);
+  const [uData, setUData] = useState({});
+  const [updated, setUpdated] = useState(null);
+
   useEffect(() => {
     fetch(`http://localhost:5000/${id}`, {
       method: 'GET',
@@ -14,20 +22,27 @@ const ProfilePage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setUser(data.user);
-        console.log(data);
-        // setUpdated(false);
+        setUData({
+          email: user.email,
+          username: user.username,
+          fullName: user.fullName,
+          address: user.address,
+          // password: user.password,
+        });
+        console.log(uData);
+        setUpdated(false);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [updated]);
 
-  const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email);
-  const [fullName, setFullName] = useState(user.fullName);
-  const [address, setAddress] = useState(user.address);
-  const [password, setPassword] = useState(user.password);
+  const handleChange = (e) => {
+    setUData({ ...uData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async () => {
-    const userData = { email, username, fullName, address, password };
+    const userData = { ...uData };
+    console.log(uData);
+    console.log(userData);
 
     try {
       let response = await fetch(`http://localhost:5000/${id}`, {
@@ -43,6 +58,7 @@ const ProfilePage = ({ navigate }) => {
         setError(data.error);
       } else {
         setError('');
+        setUpdated(true);
       }
     } catch (error) {
       console.error(error);
@@ -74,12 +90,13 @@ const ProfilePage = ({ navigate }) => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   className="form-control"
                   id="email"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={uData.email}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -88,12 +105,13 @@ const ProfilePage = ({ navigate }) => {
                 </label>
                 <input
                   type="text"
+                  name="username"
                   className="form-control"
                   id="username"
                   aria-describedby="userHelp"
                   placeholder="Enter username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={uData.username}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -102,12 +120,13 @@ const ProfilePage = ({ navigate }) => {
                 </label>
                 <input
                   type="text"
+                  name="fullName"
                   className="form-control"
                   id="fullName"
                   aria-describedby="fullNameHelp"
                   placeholder="Enter full name"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={uData.fullName}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -116,12 +135,13 @@ const ProfilePage = ({ navigate }) => {
                 </label>
                 <input
                   type="text"
+                  name="address"
                   className="form-control"
                   id="address"
                   aria-describedby="addressNameHelp"
                   placeholder="Enter address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  value={uData.address}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -130,13 +150,14 @@ const ProfilePage = ({ navigate }) => {
                 </label>
                 <input
                   required
+                  name="password"
                   type="password"
                   className="form-control"
                   id="password"
                   aria-describedby="passwordNameHelp"
                   placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  // value={uData.password}
+                  onChange={handleChange}
                 />
               </div>
               <button type="submit" className="btn btn-success">
