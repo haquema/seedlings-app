@@ -130,51 +130,6 @@ const Signup = ({ navigate }) => {
           </div>
         </div>
       </div>
-
-      {/* <div className="profile-details">
-        <h3>Sign Up</h3>
-        <form id="signup_form" onSubmit={handleSubmit}>
-          <input
-            required
-            placeholder="Email"
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            required
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            required
-            placeholder="Username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            required
-            placeholder="Full Name"
-            id="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
-          <input
-            required
-            placeholder="Address"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <button type="submit">Sign up</button>
-          {error && <p>{error}</p>}
-        </form>
-      </div> */}
     </>
   );
 };

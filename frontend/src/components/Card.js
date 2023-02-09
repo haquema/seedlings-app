@@ -92,13 +92,6 @@ const Card = ({ plant, setUpdated }) => {
                   Add to garden &#129293;
                 </button>
               )}
-
-              {/* <button
-                onClick={(e) => handleGarden(plant._id, e)}
-                className="btn btn-sm btn-success"
-              >
-                {isSaved ? 'In your garden' : 'Add to Garden'}
-              </button> */}
             </div>
           </div>
         </div>

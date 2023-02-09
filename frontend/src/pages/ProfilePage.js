@@ -5,7 +5,7 @@ const ProfilePage = ({ navigate }) => {
   const { id } = useParams();
   const [user, setUser] = useState([]);
   const [error, setError] = useState('');
-  const name = window.localStorage.getItem("user_name");
+  const name = window.localStorage.getItem('user_name');
 
   useEffect(() => {
     fetch(`http://localhost:5000/${id}`, {
@@ -27,7 +27,6 @@ const ProfilePage = ({ navigate }) => {
   const [password, setPassword] = useState(user.password);
 
   const handleSubmit = async () => {
-    
     const userData = { email, username, fullName, address, password };
 
     try {
@@ -44,8 +43,6 @@ const ProfilePage = ({ navigate }) => {
         setError(data.error);
       } else {
         setError('');
-
-        
       }
     } catch (error) {
       console.error(error);
@@ -150,36 +147,6 @@ const ProfilePage = ({ navigate }) => {
           </div>
         </div>
       </div>
-
-      {/* <form id="update_form" onSubmit={handleSubmit}>
-        <input
-          placeholder="Email"
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          placeholder="Username"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          placeholder="Full Name"
-          id="fullName"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-        <input
-          placeholder="Address"
-          id="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <button type="submit">Update</button>
-        {error && <p>{error}</p>}
-      </form> */}
     </>
   );
 };
